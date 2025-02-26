@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sl1ghtyhysteria</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #logMessage {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Choose Your Fate</h1>
+    <button onclick="leaveSite()">Leave the Site</button>
+    <button onclick="hysteria()">Lose Your Mind</button>
+    <button onclick="openNewTab()">New</button>
+    <p id="logMessage"></p>
+    <audio id="audio" loop>
+        <source id="audioSource" src="https://dl.sndup.net/x8bfs/hysteria-made-with-Voicemod%20-%20Copy.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        function leaveSite() {
+            window.location.href = "https://www.google.com"; // Change URL if needed
+        }
+
+        function hysteria() {
+            let audio = document.getElementById("audio");
+            audio.volume = 1.0; // Set volume to max
+            
+            document.getElementById("logMessage").innerText = "Logging...";
+            
+            setTimeout(() => {
+                document.getElementById("logMessage").innerHTML = "Logged<br>125.3826.8362.978";
+                
+                audio.load(); // Ensure audio is ready before playing
+                audio.play().then(() => console.log("Audio playing at max volume"))
+                    .catch(error => console.error("Audio play failed: ", error));
+                
+                setTimeout(() => {
+                    let countdown = 4;
+                    document.getElementById("logMessage").innerText = `You're cooked in ${countdown}...`;
+                    let countdownInterval = setInterval(() => {
+                        countdown--;
+                        if (countdown > 0) {
+                            document.getElementById("logMessage").innerText = `You're cooked in ${countdown}...`;
+                        } else {
+                            clearInterval(countdownInterval);
+                            window.location.href = "https://dl.sndup.net/x8bfs/hysteria-made-with-Voicemod%20-%20Copy.mp3";
+                        }
+                    }, 1000);
+                }, 4000);
+            }, 5000);
+        }
+
+        function openNewTab() {
+            window.open("https://preview-empty_html.playcode.io/", "_blank");
+        }
+    </script>
+</body>
+</html>
